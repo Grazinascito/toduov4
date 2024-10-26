@@ -1,5 +1,5 @@
-import { EnhancedGridLayoutProductivityApp } from "@/components/enhanced-grid-layout-productivity-app"
+import { Home } from "@/components/Home";
 
 export default function Page() {
-  return <EnhancedGridLayoutProductivityApp />
+  return <Home />;
 }
