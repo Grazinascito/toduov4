@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // hooks/useSupabase.ts
 import { useEffect, useState, useRef } from "react";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-
+import { RealtimeChannel } from "@supabase/supabase-js";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -23,7 +24,8 @@ const useSupabase = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [channelId, setChannelId] = useState<string | null>(null);
-  const channelRef = useRef<any>(null);
+
+  const channelRef = useRef<RealtimeChannel | null>(null);
 
   const insertUser = async (username: string) => {
     const { data, error } = await supabase.from("users").insert([{ username }]);
@@ -80,19 +82,17 @@ const useSupabase = () => {
       }
     };
 
-    const createChannel = async () => {
-      const { data, error } = await supabase
-        .from("sync_channels")
-        .insert([{ user1_id: /* your user ID */, user2_id: /* other user ID */ }]);
-    
-      if (error) {
-        setError(error.message);
-      } else {
-        setChannelId(data[0].id);
-      }
-    };
-    
-    
+    // const createChannel = async () => {
+    //   const { data, error } = await supabase
+    //     .from("sync_channels")
+    //     .insert([{ user1_id: /* your user ID */, user2_id: /* other user ID */ }]);
+
+    //   if (error) {
+    //     setError(error.message);
+    //   } else {
+    //     setChannelId(data[0].id);
+    //   }
+    // };
 
     fetchUsers();
     fetchChannelId();
