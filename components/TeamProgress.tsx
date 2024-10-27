@@ -9,7 +9,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Progress } from "@/components/ui/progress";
-import { ShareButton } from "./ShareButton";
+
 import useSupabase from "@/lib/services/supabase/useSupabase";
 
 type TaskItem = {
@@ -29,7 +29,7 @@ type TeamProgressProps = {
 };
 
 const TeamProgress: React.FC<TeamProgressProps> = ({ tasks, friendTasks }) => {
-  const { channelId, loading, error } = useSupabase();
+  const { loading, error } = useSupabase();
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
