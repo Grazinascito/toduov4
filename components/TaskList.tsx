@@ -23,15 +23,14 @@ import { Label } from "@/components/ui/label";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 
 const pastelColors = [
-  "#FFB3BA",
   "#FFDFBA",
   "#FFFFBA",
-  "#BAFFC9",
+
   "#BAE1FF",
-  "#FFC6FF",
+
   "#FFDAB9",
   "#E6E6FA",
-  "#B0E0E6",
+
   "#FFE4E1",
 ];
 

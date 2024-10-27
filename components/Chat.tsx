@@ -11,7 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Send, UserPlus } from "lucide-react";
+import { Send } from "lucide-react";
 
 type Message = {
   id: number;
@@ -47,18 +47,6 @@ const Chat: React.FC = () => {
       <CardHeader className="pb-2">
         <div className="flex justify-between items-center">
           <CardTitle className="text-lg font-medium">Coworking Chat</CardTitle>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button size="sm" variant="outline">
-                  <UserPlus className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Invite a friend</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
         </div>
       </CardHeader>
       <CardContent className="p-4 h-[calc(100%-5rem)] flex flex-col">

@@ -9,8 +9,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
-import { UserPlus } from "lucide-react";
+import { ShareButton } from "./ShareButton";
+import useSupabase from "@/lib/services/supabase/useSupabase";
 
 type TaskItem = {
   id: number;
@@ -29,6 +29,10 @@ type TeamProgressProps = {
 };
 
 const TeamProgress: React.FC<TeamProgressProps> = ({ tasks, friendTasks }) => {
+  const { channelId, loading, error } = useSupabase();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
   const completedTasksCount = tasks.filter((task) => task.completed).length;
   const friendCompletedTasksCount = friendTasks.filter(
     (task) => task.completed
@@ -36,10 +40,10 @@ const TeamProgress: React.FC<TeamProgressProps> = ({ tasks, friendTasks }) => {
 
   return (
     <Card className="shadow-md col-span-1">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-primary">
-          Team Progress
-        </CardTitle>
+      <CardHeader className="flex justify-between items-center">
+        <CardTitle className="text-lg font-medium">Team Progress</CardTitle>
+
+        {/* {channelId && <ShareButton channelId={channelId} />} */}
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
